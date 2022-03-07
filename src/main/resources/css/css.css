@@ -1,0 +1,14 @@
+.homePane{
+-fx-background-color: #FFE4C4;
+}
+
+.click {
+  -fx-background-color: #6495ED;
+  -fx-text-fill: #000000;
+  -fx-border-color: 2px solid white;
+}
+
+.click:hover {
+  -fx-background-color: #FFFFFF;
+  -fx-color: #FFFFFF;
+}

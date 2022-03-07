@@ -10,14 +10,18 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 public class ScannerManager {
-    private final Stage primaryStage;
+    private Stage primaryStage;
     private Scene scene;
+    private GameService service;
 
     public ScannerManager(Stage stage) throws IOException {
         this.primaryStage = stage;
         initView();
     }
 
+    public  ScannerManager(){
+
+    }
     private void initView() throws IOException {
         showScene();
     }
@@ -38,4 +42,14 @@ public class ScannerManager {
             primaryStage.show();
         });
     }
+
+    public Parent showTabSlotKing() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(SlotKingPresenter.FXML));
+        Parent tabKing = loader.load();
+        SlotKingPresenter presenter;
+        presenter = loader.getController();
+
+        return tabKing;
     }
+}
