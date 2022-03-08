@@ -12,3 +12,23 @@
   -fx-background-color: #FFFFFF;
   -fx-color: #FFFFFF;
 }
+.homeIm{
+  -fx-effect: dropshadow(three-pass-box, rgba(1,1,1,0.9), 10, 1, 1, 1);
+}
+
+.dialog{
+-fx-background-color: #696969;
+-fx-effect: dropshadow(three-pass-box, rgba(1,1,1,0.9), 10, 1, 1, 1);
+}
+
+.text{
+-fx-text-fill: white;
+-fx-alignment: center;
+}
+
+.label{
+-fx-background-color: #696969;
+-fx-effect: dropshadow(three-pass-box, rgba(1,1,1,0.9), 10, 1, 1, 1);
+-fx-text-fill: white;
+-fx-alignment: center;
+}

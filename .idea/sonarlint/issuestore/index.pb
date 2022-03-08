@@ -15,3 +15,11 @@ e
 5.idea/libraries/Maven__org_openjfx_javafx_fxml_11.xml,e\3\e3c60c309b827866b2c4f02afc78b97a7bf03e35
 i
 9.idea/libraries/Maven__org_openjfx_javafx_fxml_win_11.xml,1\6\16659103fe992647fa3ad8817199afd2ef905b74
+d
+4.idea/libraries/Maven__com_jfoenix_jfoenix_9_0_1.xml,2\1\21f8414871c811ec5a4971773d4e1a3ea870792a
+7
+pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
+A
+SlotAutomaten.iml,d\0\d0e9b7c21d98bb075b8f27c2008c5f62216eedfe
+[
++src/main/java/sample/SlotKingPresenter.java,2\2\22cb788dc0dbc584d94a1b1a83970ed69a76c58e

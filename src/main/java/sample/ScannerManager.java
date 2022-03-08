@@ -26,6 +26,9 @@ public class ScannerManager {
         showScene();
     }
 
+    public void setGameService(GameService service){
+        this.service = service;
+    }
     private void showScene() throws IOException {
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource(HomePagePresenter.FXML));
@@ -35,6 +38,7 @@ public class ScannerManager {
         presenter = loader.getController();
 
         Platform.runLater(() -> {
+            presenter.viewHomeImage();
             primaryStage.initStyle(StageStyle.UTILITY);
             primaryStage.setTitle("Platform");
             scene = new Scene(rootParent, 1000, 600);
@@ -49,7 +53,6 @@ public class ScannerManager {
         Parent tabKing = loader.load();
         SlotKingPresenter presenter;
         presenter = loader.getController();
-
         return tabKing;
     }
 }
