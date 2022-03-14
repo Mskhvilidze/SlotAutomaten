@@ -6,50 +6,42 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0"
-            prefWidth="1000.0" stylesheets="/css/css.css" xmlns="http://javafx.com/javafx/11.0.1"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HomePagePresenter">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="/css/css.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.HomePagePresenter">
     <children>
         <Pane prefHeight="600.0" prefWidth="1000.0" styleClass="homePane">
             <children>
                 <MenuButton fx:id="menu" disable="true" mnemonicParsing="false" text="MenuButton">
                     <items>
-                        <MenuItem mnemonicParsing="false" onAction="#onSlotKingGame" text="SlotKing"/>
-                        <MenuItem mnemonicParsing="false" text="SlotRoulette"/>
-                        <MenuItem mnemonicParsing="false" text="insertMoney"/>
-                        <MenuItem mnemonicParsing="false" text="outMoney"/>
+                        <MenuItem mnemonicParsing="false" onAction="#onSlotKingGame" text="SlotKing" />
+                        <MenuItem mnemonicParsing="false" text="SlotRoulette" />
+                        <MenuItem mnemonicParsing="false" text="insertMoney" />
+                        <MenuItem mnemonicParsing="false" text="outMoney" />
                     </items>
                 </MenuButton>
-                <TabPane fx:id="tabPane" layoutX="99.0" prefHeight="600.0" prefWidth="902.0"
-                         tabClosingPolicy="UNAVAILABLE" visible="false"/>
-                <JFXButton fx:id="insertCash" layoutX="400.0" layoutY="400.0" onAction="#onInsertCash" prefHeight="30.0"
-                           prefWidth="100.0" styleClass="click" text="Button" viewOrder="2.0">
+                <TabPane fx:id="tabPane" layoutX="99.0" prefHeight="600.0" prefWidth="902.0" tabClosingPolicy="UNAVAILABLE" visible="false" />
+                <JFXButton fx:id="insertCash" layoutX="400.0" layoutY="400.0" onAction="#onInsertCash" prefHeight="30.0" prefWidth="100.0" styleClass="click" text="Button" viewOrder="2.0">
                     <font>
-                        <Font name="Bernard MT Condensed" size="14.0"/>
+                        <Font name="Bernard MT Condensed" size="14.0" />
                     </font>
                 </JFXButton>
-                <ImageView fx:id="homeImage" fitHeight="367.0" fitWidth="902.0" layoutX="99.0" pickOnBounds="true"
-                           preserveRatio="true" styleClass="homeIm"/>
-                <JFXDialog fx:id="window" layoutX="600.0" layoutY="420.0" prefHeight="100.0" prefWidth="200.0"
-                           styleClass="dialog" visible="false">
+                <ImageView fx:id="homeImage" fitHeight="367.0" fitWidth="902.0" layoutX="99.0" pickOnBounds="true" preserveRatio="true" styleClass="homeIm" />
+                <JFXDialog fx:id="window" layoutX="600.0" layoutY="420.0" prefHeight="100.0" prefWidth="200.0" styleClass="dialog" visible="false">
                     <children>
                         <JFXTextField fx:id="insertMoney" styleClass="text" unFocusColor="WHITE">
                             <font>
-                                <Font name="Cambria" size="14.0"/>
+                                <Font name="Cambria" size="14.0" />
                             </font>
                         </JFXTextField>
                     </children>
                 </JFXDialog>
-                <Label fx:id="infOfInsert" layoutX="600.0" layoutY="380.0" prefHeight="30.0" prefWidth="200.0"
-                       text="Please deposit money" visible="false">
+                <Label fx:id="infOfInsert" layoutX="600.0" layoutY="380.0" prefHeight="30.0" prefWidth="200.0" text="Please deposit money" visible="false">
                     <font>
-                        <Font size="14.0"/>
+                        <Font size="14.0" />
                     </font>
                 </Label>
-                <JFXButton fx:id="accept" layoutX="650.0" layoutY="530.0" onAction="#onAcceptCash" prefHeight="30.0"
-                           prefWidth="100.0" styleClass="click" text="Accept" viewOrder="2.0" visible="false">
+                <JFXButton fx:id="accept" layoutX="650.0" layoutY="540.0" onAction="#onAcceptCash" prefHeight="30.0" prefWidth="100.0" styleClass="click" text="Accept" viewOrder="2.0" visible="false">
                     <font>
-                        <Font name="Bernard MT Condensed" size="14.0"/>
+                        <Font name="Bernard MT Condensed" size="14.0" />
                     </font>
                 </JFXButton>
 

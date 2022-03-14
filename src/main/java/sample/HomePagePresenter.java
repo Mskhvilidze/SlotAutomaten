@@ -44,8 +44,8 @@ public class HomePagePresenter implements Initializable {
         service = new GameService();
     }
 
-    public void setService() {
-        manager.setGameService(service);
+    public GameService getService() {
+        return service;
     }
 
     private Tab createTab() {
@@ -118,7 +118,8 @@ public class HomePagePresenter implements Initializable {
     public void onAcceptCash() {
         if (Integer.parseInt(insertMoney.getText()) > 0) {
             toggleMenuButtonDisable(menu, false);
-            service.setMoney(Integer.parseInt(insertMoney.getText()));
+            service.insert(Integer.parseInt(insertMoney.getText()));
+            manager.setService(service);
             toggleDialogWindowVisible(window, false);
             toggleLabelVisible(infOfInsert, false);
         }
