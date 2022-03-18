@@ -9,6 +9,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -60,6 +62,7 @@ public class SlotKingPresenter implements Initializable {
     private void toggleMenuButtonDisable(JFXButton button, boolean visible) {
         button.setDisable(visible);
     }
+
     private void toggleImageViewVisible(ImageView imageView, boolean visible) {
         imageView.setVisible(visible);
     }
@@ -69,10 +72,26 @@ public class SlotKingPresenter implements Initializable {
         gifView.setImage(gif);
         toggleImageViewVisible(kingView, false);
         toggleImageViewVisible(gifView, true);
+        int[] arr = gameService.onDice();
+        int betMoney = (int) cash.getValue();
         Timer t = new Timer();
         t.schedule(new TimerTask() {
             @Override
             public void run() {
+                if (arr[0] == arr[1]) {
+                    int wonCash = betMoney * 10;
+                    gameService.setMoney(wonCash);
+                    Platform.runLater(() -> {
+                        info.setTextFill(Color.MEDIUMSEAGREEN);
+                        info.setText("You won" + "\n" + "Won: " + wonCash + "\n" + "Your money: " + gameService.getMoney());
+                    });
+                } else {
+                    Platform.runLater(() -> {
+                        info.setTextFill(Color.GOLDENROD);
+                        info.setText("You lost" + "\n" + "Your money: " + gameService.getMoney());
+                    });
+                }
+
                 toggleImageViewVisible(kingView, true);
                 toggleImageViewVisible(gifView, false);
                 toggleMenuButtonDisable(dice, true);
@@ -84,6 +103,13 @@ public class SlotKingPresenter implements Initializable {
     @FXML
     public void onRaiseMoney(ActionEvent event) {
         toggleMenuButtonDisable(dice, false);
-        gameService.raiseMoney((int) cash.getValue());
+        if (gameService.getMoney() >= (int) cash.getValue()) {
+            gameService.raiseMoney((int) cash.getValue());
+        } else {
+            Platform.runLater(() -> {
+                info.setText("Your budget is not" + "\n" + "sufficient, please deposit it");
+                info.setTextFill(Color.ORANGERED);
+            });
+        }
     }
 }

@@ -21,8 +21,11 @@
                         <Font name="Bernard MT Condensed" size="14.0" />
                     </font>
                 </JFXButton>
-                <Label fx:id="info" layoutX="642.0" prefHeight="310.0" prefWidth="312.0" />
-                <JFXSlider fx:id="cash" blockIncrement="1.0" layoutX="70.0" layoutY="510.0" prefHeight="14.0" prefWidth="504.0" style="-fx-background-radius: 25px; -fx-border-radius: 50px; -fx-region-background: #6495ED; -fx-background-insets: 0 0 0 0, 0, 1, 2; -fx-border-radius: 5;" />
+                <Label fx:id="info" layoutX="642.0" prefHeight="310.0" prefWidth="312.0">
+               <font>
+                  <Font name="Book Antiqua" size="17.0" />
+               </font></Label>
+                <JFXSlider fx:id="cash" blockIncrement="1.0" layoutX="70.0" layoutY="510.0" prefHeight="14.0" prefWidth="504.0" style="-fx-background-radius: 25px; -fx-border-radius: 50px; -fx-background-insets: 0 0 0 0, 0, 1, 2; -fx-border-radius: 5;" />
             <ImageView fx:id="gifView" fitHeight="393.0" fitWidth="633.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true" visible="false" />
             </children>
         </Pane>
