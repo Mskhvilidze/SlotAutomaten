@@ -55,7 +55,11 @@ public class ScannerManager {
         Parent tabKing = loader.load();
         SlotKingPresenter presenter;
         presenter = loader.getController();
-        System.out.println(service.getMoney());
+        presenter.setService(service);
+        Platform.runLater(() -> {
+            presenter.viewImage();
+            presenter.initialInf();
+        });
         return tabKing;
     }
 }

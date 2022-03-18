@@ -1,12 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.controls.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="/css/css.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Pane prefHeight="600.0" prefWidth="1000.0" styleClass="homePane">
-
-      </Pane>
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="1000.0" stylesheets="/css/css.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SlotKingPresenter">
+    <children>
+        <Pane prefHeight="600.0" prefWidth="1000.0" styleClass="homePane">
+            <children>
+                <ImageView fx:id="kingView" fitHeight="393.0" fitWidth="633.0" pickOnBounds="true" preserveRatio="true" />
+                <JFXButton fx:id="dice" disable="true" layoutY="423.0" onAction="#onDiceGame" prefHeight="30.0" prefWidth="100.0" styleClass="click" text="Dice">
+                    <font>
+                        <Font name="Bernard MT Condensed" size="14.0" />
+                    </font>
+                </JFXButton>
+                <JFXButton layoutX="542.0" layoutY="423.0" onAction="#onRaiseMoney" prefHeight="30.0" prefWidth="100.0" styleClass="click" text="Raise">
+                    <font>
+                        <Font name="Bernard MT Condensed" size="14.0" />
+                    </font>
+                </JFXButton>
+                <Label fx:id="info" layoutX="642.0" prefHeight="310.0" prefWidth="312.0" />
+                <JFXSlider fx:id="cash" blockIncrement="1.0" layoutX="70.0" layoutY="510.0" prefHeight="14.0" prefWidth="504.0" style="-fx-background-radius: 25px; -fx-border-radius: 50px; -fx-region-background: #6495ED; -fx-background-insets: 0 0 0 0, 0, 1, 2; -fx-border-radius: 5;" />
+            <ImageView fx:id="gifView" fitHeight="393.0" fitWidth="633.0" layoutX="10.0" pickOnBounds="true" preserveRatio="true" visible="false" />
+            </children>
+        </Pane>
+    </children>
 </AnchorPane>

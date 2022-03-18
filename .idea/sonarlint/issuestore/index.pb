@@ -21,5 +21,3 @@ d
 pom.xml,4\4\442292b8a7efeabbe4cc176709b833b1792140ec
 A
 SlotAutomaten.iml,d\0\d0e9b7c21d98bb075b8f27c2008c5f62216eedfe
-[
-+src/main/java/sample/SlotKingPresenter.java,2\2\22cb788dc0dbc584d94a1b1a83970ed69a76c58e

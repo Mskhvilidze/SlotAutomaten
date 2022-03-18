@@ -7,7 +7,15 @@ public class GameService {
         this.money = money;
     }
 
-    public void insert(int cash){
+    public void insert(int cash) {
+        this.money += cash;
+    }
+
+    public void raiseMoney(int cash) {
+        this.money -= cash;
+    }
+
+    public void won(int cash) {
         this.money += cash;
     }
 
