@@ -36,7 +36,7 @@ public class SlotKingPresenter implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         kingImage = new Image(String.valueOf(getClass().getResource("/image/king.jpg")));
-        gif = new Image(String.valueOf(getClass().getResource("/image/wurf2.gif")));
+        gif = new Image(String.valueOf(getClass().getResource("/image/wurf.gif")), 550, 290, false, false);
     }
 
     public void viewImage() {
@@ -83,12 +83,12 @@ public class SlotKingPresenter implements Initializable {
                     gameService.setMoney(wonCash);
                     Platform.runLater(() -> {
                         info.setTextFill(Color.MEDIUMSEAGREEN);
-                        info.setText("You won" + "\n" + "Won: " + wonCash + "\n" + "Your money: " + gameService.getMoney());
+                        info.setText("You won" + "\n" + "Won: " + wonCash + "\n" + "Number 1: " + arr[0] + "\n" + "Number 2: " + arr[1] + "\n" + "Your money: " + gameService.getMoney());
                     });
                 } else {
                     Platform.runLater(() -> {
                         info.setTextFill(Color.GOLDENROD);
-                        info.setText("You lost" + "\n" + "Your money: " + gameService.getMoney());
+                        info.setText("You lost" + "\n" + "Number 1: " + arr[0] + "\n" + "Number 2: " + arr[1] + "\n" + "Your money: " + gameService.getMoney());
                     });
                 }
 
