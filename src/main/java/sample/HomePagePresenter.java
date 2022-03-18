@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDialog;
 import com.jfoenix.controls.JFXTextField;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -12,15 +13,21 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.paint.Color;
+import javafx.scene.text.*;
 
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class HomePagePresenter implements Initializable {
     public static final String FXML = "/fxml/home.fxml";
     private ScannerManager manager;
     private GameService service;
+    @FXML
+    private TextFlow out;
     @FXML
     private JFXButton accept;
     @FXML
@@ -76,10 +83,22 @@ public class HomePagePresenter implements Initializable {
         imageView.setVisible(visible);
     }
 
+    private void toggleTextFlowVisible(TextFlow textFlow, boolean visible) {
+        textFlow.setVisible(visible);
+    }
+
     public void viewHomeImage() {
         Platform.runLater(() -> {
             homeImage.setImage(image);
         });
+    }
+
+    private Text getGameOverText() {
+        Text text = new Text();
+        text.setFont(Font.font("Verdana", FontWeight.BOLD, 18));
+        text.setText("\n" + "\n" + "\n" + "\n" + "\n" + "Game Over" + "\n" + "Your Money: " + service.getMoney() + "\n" + "See you bye!");
+        text.setFill(Color.WHITE);
+        return text;
     }
 
     //FXM Method
@@ -124,5 +143,20 @@ public class HomePagePresenter implements Initializable {
             toggleLabelVisible(infOfInsert, false);
         }
         toggleButtonVisible(accept, false);
+    }
+
+    @FXML
+    public void onOutMoney(ActionEvent event) {
+        toggleTextFlowVisible(out, true);
+        out.getChildren().add(getGameOverText());
+        Timer t = new Timer();
+        t.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                Platform.runLater(() -> {
+                    System.exit(0);
+                });
+            }
+        }, 3500);
     }
 }
