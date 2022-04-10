@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
+
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Timer;
@@ -34,7 +35,7 @@ public class SlotKingPresenter implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         kingImage = new Image(String.valueOf(getClass().getResource("/image/king.jpg")));
-        gif = new Image(String.valueOf(getClass().getResource("/image/wurf2.gif")),633, 320, false, false);
+        gif = new Image(String.valueOf(getClass().getResource("/image/wurf2.gif")), 633, 320, false, false);
     }
 
     public void viewImage() {
@@ -67,42 +68,49 @@ public class SlotKingPresenter implements Initializable {
 
     @FXML
     public void onDiceGame() {
-        gifView.setImage(gif);
-        toggleImageViewVisible(kingView, false);
-        toggleImageViewVisible(gifView, true);
-        int[] arr = gameService.onDice();
-        int betMoney = (int) cash.getValue();
-        Timer t = new Timer();
-        t.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                if (arr[0] == arr[1]) {
-                    int wonCash = betMoney * 10;
-                    gameService.setMoney(wonCash);
-                    Platform.runLater(() -> {
-                        info.setTextFill(Color.MEDIUMSEAGREEN);
-                        info.setText("You won" + "\n" + "Won: " + wonCash + "\n" + "Number 1: " + arr[0] + "\n" + "Number 2: " + arr[1] + "\n" + "Your money: " + gameService.getMoney());
-                    });
-                } else {
-                    Platform.runLater(() -> {
-                        info.setTextFill(Color.GOLDENROD);
-                        info.setText("You lost" + "\n" + "Number 1: " + arr[0] + "\n" + "Number 2: " + arr[1] + "\n" + "Your money: " + gameService.getMoney());
-                    });
-                }
+        if (gameService.getMoney() >= (int) cash.getValue()) {
+            gifView.setImage(gif);
+            toggleImageViewVisible(kingView, false);
+            toggleImageViewVisible(gifView, true);
+            int[] arr = gameService.onDice();
+            int betMoney = (int) cash.getValue();
+            Timer t = new Timer();
+            t.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    if (arr[0] == arr[1]) {
+                        int wonCash = betMoney * 10;
+                        gameService.setMoney(wonCash);
+                        Platform.runLater(() -> {
+                            info.setTextFill(Color.MEDIUMSEAGREEN);
+                            info.setText("You won" + "\n" + "Won: " + wonCash + "\n" + "Number 1: " + arr[0] + "\n" + "Number 2: " + arr[1] + "\n" + "Your money: " + gameService.getMoney());
+                        });
+                    } else {
+                        Platform.runLater(() -> {
+                            info.setTextFill(Color.GOLDENROD);
+                            info.setText("You lost" + "\n" + "Number 1: " + arr[0] + "\n" + "Number 2: " + arr[1] + "\n" + "Your money: " + gameService.getMoney());
+                        });
+                    }
 
-                toggleImageViewVisible(kingView, true);
-                toggleImageViewVisible(gifView, false);
-                toggleMenuButtonDisable(dice, true);
-                t.cancel();
-            }
-        }, 5000);
+                    toggleImageViewVisible(kingView, true);
+                    toggleImageViewVisible(gifView, false);
+                    toggleMenuButtonDisable(dice, true);
+                    t.cancel();
+                }
+            }, 5000);
+        } else {
+            info.setText("Please select a number!");
+            info.setTextFill(Color.ORANGERED);
+        }
     }
 
     @FXML
     public void onRaiseMoney(ActionEvent event) {
         if (gameService.getMoney() >= (int) cash.getValue()) {
             gameService.raiseMoney((int) cash.getValue());
+            info.setTextFill(Color.WHITE);
             toggleMenuButtonDisable(dice, false);
+            initialInf();
         } else {
             Platform.runLater(() -> {
                 info.setText("Your budget is not" + "\n" + "sufficient, please deposit it");

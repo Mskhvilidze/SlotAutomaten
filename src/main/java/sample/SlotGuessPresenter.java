@@ -73,44 +73,47 @@ public class SlotGuessPresenter implements Initializable {
 
     @FXML
     public void onDiceGame() {
-        gifDice.setImage(gifView);
-        service.toggleImageVisible(imageView, false);
-        service.toggleImageVisible(gifDice, true);
-        int betMoney = (int) cash.getValue();
-        int[] arr = gameService.onDice();
-        Timer t = new Timer();
-        t.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                if (Integer.parseInt(combo.getValue().toString()) == arr[0]) {
-                    int wonCash = betMoney * 20;
-                    gameService.setMoney(wonCash);
-                    Platform.runLater(() -> {
-                        info.setTextFill(Color.MEDIUMSEAGREEN);
-                        info.setText("You won" + "\n" + "Won: " + wonCash + "\n" + "Number: " + arr[0] + "\n" + "The number you chose: " +
-                                Integer.parseInt(combo.getValue().toString()) + "\n" + "Your money: " + gameService.getMoney());
-                    });
-                } else {
-                    Platform.runLater(() -> {
-                        info.setTextFill(Color.GOLDENROD);
-                        info.setText("You lost" + "\n" + "Number: " + arr[0] + "\n" + "The number you chose: " + Integer.parseInt(combo.getValue().toString()) +
-                                "\n" + "Your money: " +
-                                gameService.getMoney());
-                    });
+        if (gameService.getMoney() >= (int) cash.getValue()) {
+            gifDice.setImage(gifView);
+            service.toggleImageVisible(imageView, false);
+            service.toggleImageVisible(gifDice, true);
+            int betMoney = (int) cash.getValue();
+            int[] arr = gameService.onDice();
+            Timer t = new Timer();
+            t.schedule(new TimerTask() {
+                @Override
+                public void run() {
+                    if (Integer.parseInt(combo.getValue().toString()) == arr[0]) {
+                        int wonCash = betMoney * 20;
+                        gameService.setMoney(wonCash);
+                        Platform.runLater(() -> {
+                            info.setTextFill(Color.MEDIUMSEAGREEN);
+                            info.setText("You won" + "\n" + "Won: " + wonCash + "\n" + "Number: " + arr[0] + "\n" + "The number you chose: " + Integer.parseInt(combo.getValue().toString()) + "\n" + "Your money: " + gameService.getMoney());
+                        });
+                    } else {
+                        Platform.runLater(() -> {
+                            info.setTextFill(Color.GOLDENROD);
+                            info.setText("You lost" + "\n" + "Number: " + arr[0] + "\n" + "The number you chose: " + Integer.parseInt(combo.getValue().toString()) + "\n" + "Your money: " + gameService.getMoney());
+                        });
+                    }
+                    service.toggleImageVisible(imageView, true);
+                    service.toggleImageVisible(gifDice, false);
+                    service.toggleButtonDisable(dice, true);
+                    t.cancel();
                 }
-                service.toggleImageVisible(imageView, true);
-                service.toggleImageVisible(gifDice, false);
-                service.toggleButtonDisable(dice, true);
-                t.cancel();
-            }
-        }, 5000);
+            }, 5000);
+        } else {
+            info.setText("Please select a number!");
+            info.setTextFill(Color.ORANGERED);
+        }
     }
 
     @FXML
     public void onSelectNumber(ActionEvent event) {
-        if (combo.getValue() != null) {
+        if (combo.getValue() != null && gameService.getMoney() >= (int) cash.getValue()) {
             service.toggleButtonDisable(dice, false);
             gameService.raiseMoney((int) cash.getValue());
+            info.setTextFill(Color.WHITE);
             initialInf();
         } else {
             info.setText("Please select a number!");
