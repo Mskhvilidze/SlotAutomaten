@@ -1,0 +1,49 @@
+.homePane{
+-fx-background-color: #FFE4C4;
+}
+
+.click {
+  -fx-background-color: #6495ED;
+  -fx-text-fill: #000000;
+  -fx-border-color: 2px solid white;
+}
+
+.click:hover {
+  -fx-background-color: #FFFFFF;
+  -fx-color: #FFFFFF;
+}
+.homeIm{
+  -fx-effect: dropshadow(three-pass-box, rgba(1,1,1,0.9), 10, 1, 1, 1);
+}
+
+.dialog{
+-fx-background-color: #696969;
+-fx-effect: dropshadow(three-pass-box, rgba(1,1,1,0.9), 10, 1, 1, 1);
+}
+
+.text{
+-fx-text-fill: white;
+-fx-alignment: center;
+}
+
+.label{
+-fx-background-color: #696969;
+-fx-effect: dropshadow(three-pass-box, rgba(1,1,1,0.9), 10, 1, 1, 1);
+-fx-text-fill: white;
+-fx-alignment: center;
+}
+
+.outMoney{
+-fx-background-color: rgba(0, 100, 100, 0.5);
+-fx-background-radius: 10;
+}
+
+.combo-box-base {
+    -fx-background-color: -fx-shadow-highlight-color, -fx-outer-border, -fx-inner-border, -fx-body-color;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-background-radius: 3px, 3px, 2px, 1px;
+    -fx-padding: 0.333333em 0.666667em 0.333333em 0.666667em; /* 4 8 4 8 */
+    -fx-text-fill: -fx-text-base-color;
+    -fx-alignment: CENTER;
+    -fx-content-display: LEFT;
+}
