@@ -83,15 +83,16 @@ public class SlotKingPresenter implements Initializable {
                         gameService.setMoney(wonCash);
                         Platform.runLater(() -> {
                             info.setTextFill(Color.MEDIUMSEAGREEN);
-                            info.setText("You won" + "\n" + "Won: " + wonCash + "\n" + "Number 1: " + arr[0] + "\n" + "Number 2: " + arr[1] + "\n" + "Your money: " + gameService.getMoney());
+                            info.setText("You won" + "\n" + "Won: " + wonCash + "\n" + "Number 1: " + arr[0] + "\n" + "Number 2: " + arr[1] + "\n" +
+                                         "Your money: " + gameService.getMoney());
                         });
                     } else {
                         Platform.runLater(() -> {
                             info.setTextFill(Color.GOLDENROD);
-                            info.setText("You lost" + "\n" + "Number 1: " + arr[0] + "\n" + "Number 2: " + arr[1] + "\n" + "Your money: " + gameService.getMoney());
+                            info.setText("You lost" + "\n" + "Number 1: " + arr[0] + "\n" + "Number 2: " + arr[1] + "\n" + "Your money: " +
+                                         gameService.getMoney());
                         });
                     }
-
                     toggleImageViewVisible(kingView, true);
                     toggleImageViewVisible(gifView, false);
                     toggleMenuButtonDisable(dice, true);
