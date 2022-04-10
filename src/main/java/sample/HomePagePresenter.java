@@ -114,6 +114,18 @@ public class HomePagePresenter implements Initializable {
         closeTab(kingTab);
     }
 
+    @FXML
+    public void onSlotGuessGame(ActionEvent event) throws IOException {
+        toggleTabPaneVisible(tabPane, true);
+        toggleImageViewVisible(homeImage, false);
+        Tab guessTab = createTab();
+        guessTab.setText("Guess");
+        tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.ALL_TABS);
+        guessTab.setContent(manager.showTabSlotGuess());
+        tabPane.getTabs().add(guessTab);
+        closeTab(guessTab);
+    }
+
     public void closeTab(Tab tab) {
         tab.setOnClosed(new EventHandler<Event>() {
             @Override

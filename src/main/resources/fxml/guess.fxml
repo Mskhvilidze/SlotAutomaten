@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="/css/css.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.SlotGuessPresenter">
+    <children>
+        <Pane layoutX="-6.0" layoutY="6.0" prefHeight="600.0" prefWidth="1000.0" styleClass="homePane">
+            <children>
+                <ImageView fx:id="imageView" fitHeight="393.0" fitWidth="633.0" pickOnBounds="true" preserveRatio="true" />
+                <Label fx:id="info" layoutX="642.0" prefHeight="300.0" prefWidth="312.0">
+                    <font>
+                        <Font name="Book Antiqua" size="17.0" />
+                    </font>
+                </Label>
+                <JFXButton fx:id="dice" disable="true" layoutX="236.0" layoutY="409.0" onAction="#onDiceGame" prefHeight="30.0" prefWidth="100.0" styleClass="click" text="Dice">
+                    <font>
+                        <Font name="Bernard MT Condensed" size="14.0" />
+                    </font>
+                </JFXButton>
+                <ImageView fx:id="gifDice" fitHeight="393.0" fitWidth="633.0" layoutX="10.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" visible="false" />
+                <JFXButton fx:id="select" layoutX="508.0" layoutY="409.0" onAction="#onSelectNumber" prefHeight="30.0" prefWidth="100.0" styleClass="click" text="Select">
+                    <font>
+                        <Font name="Bernard MT Condensed" size="14.0" />
+                    </font>
+                </JFXButton>
+                <ChoiceBox fx:id="combo" layoutX="367.0" layoutY="484.0" prefHeight="25.0" prefWidth="83.0" styleClass="combo-box-base" />
+                <JFXSlider fx:id="cash" blockIncrement="1.0" layoutX="84.0" layoutY="534.0" prefHeight="14.0" prefWidth="504.0" style="-fx-background-radius: 25px; -fx-border-radius: 50px; -fx-background-insets: 0 0 0 0, 0, 1, 2; -fx-border-radius: 5;" />
+            </children>
+        </Pane>
+    </children>
+</AnchorPane>

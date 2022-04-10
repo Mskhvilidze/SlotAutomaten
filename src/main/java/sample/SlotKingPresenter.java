@@ -10,8 +10,6 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.Timer;
@@ -36,7 +34,7 @@ public class SlotKingPresenter implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         kingImage = new Image(String.valueOf(getClass().getResource("/image/king.jpg")));
-        gif = new Image(String.valueOf(getClass().getResource("/image/wurf.gif")), 550, 290, false, false);
+        gif = new Image(String.valueOf(getClass().getResource("/image/wurf2.gif")),633, 320, false, false);
     }
 
     public void viewImage() {
@@ -102,9 +100,9 @@ public class SlotKingPresenter implements Initializable {
 
     @FXML
     public void onRaiseMoney(ActionEvent event) {
-        toggleMenuButtonDisable(dice, false);
         if (gameService.getMoney() >= (int) cash.getValue()) {
             gameService.raiseMoney((int) cash.getValue());
+            toggleMenuButtonDisable(dice, false);
         } else {
             Platform.runLater(() -> {
                 info.setText("Your budget is not" + "\n" + "sufficient, please deposit it");

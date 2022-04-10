@@ -62,4 +62,19 @@ public class ScannerManager {
         });
         return tabKing;
     }
+
+    public Parent showTabSlotGuess() throws IOException {
+        FXMLLoader loader = new FXMLLoader();
+        loader.setLocation(getClass().getResource(SlotGuessPresenter.FXML));
+        Parent tabGuess = loader.load();
+        SlotGuessPresenter presenter;
+        presenter = loader.getController();
+        presenter.setGameService(service);
+
+        Platform.runLater(() -> {
+            presenter.setImageView();
+            presenter.initialInf();
+        });
+        return tabGuess;
+    }
 }
